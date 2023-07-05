@@ -1,15 +1,45 @@
-"use client";
-import { Button, Grid, Stack } from "@mui/material";
+'use client';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import PersonIcon from '@mui/icons-material/Person';
+import TuneIcon from '@mui/icons-material/Tune';
+import Typography from '@mui/material/Typography';
+import { Feed } from './../components/feed/feed';
 
 export default function Home() {
   return (
-    <Grid container height="100vh" alignItems="center" justifyContent="center" direction="column">
-      <h1>Using Material UI with Next.js 13</h1>
-      <Stack direction="row" columnGap={1}>
-        <Button variant="text">Text</Button>
-        <Button variant="contained">Contained</Button>
-        <Button variant="outlined">Outlined</Button>
-      </Stack>
-    </Grid>
+    <>
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <TuneIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, textAlign: 'center' }}
+          >
+            Bookly
+          </Typography>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <PersonIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Feed></Feed>
+    </>
   );
 }
