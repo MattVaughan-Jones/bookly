@@ -1,16 +1,13 @@
 {
-    "compilerOptions": {
-      "sourceMap": true,
-      "outDir": "dist",
-      "strict": true,
-      "lib": [
-        "esnext"
-      ],
-      "esModuleInterop": true,
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "target": "esnext",
-      "moduleResolution": "Node",
-    }
+  "compilerOptions": {
+    "target": "es2016",
+    "lib": ["dom","es6"],
+    "module": "commonjs",
+    "outDir": "dist",
+    "removeComments": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
   }
-  
+}

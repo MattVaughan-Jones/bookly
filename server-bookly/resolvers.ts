@@ -1,4 +1,6 @@
-export default {
+import Resolvers from './generated/resolvers-types.ts';
+
+export const resolvers: Resolvers = {
     Author: {
       posts: (parent, args, context, info) => parent.getPosts(),
     },
