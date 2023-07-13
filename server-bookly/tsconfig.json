@@ -9,5 +9,10 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-  }
+    "allowImportingTsExtensions": true
+  },
+  "ts-node": {
+    "files": true
+  },
+  "include": ["**/**/*.ts", "environment.d.ts"]
 }

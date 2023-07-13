@@ -1,5 +1,5 @@
 type Organisation {
-  id: ID
+  id: ID!
   name: String
   address: String
   email: String
@@ -7,14 +7,14 @@ type Organisation {
 }
 
 type Service {
-  id: ID
+  id: ID!
   name: String
   price: Float
 }
 
 type Query {
   organisations: [Organisation]
-  organisation(id: ID): Organisation
+  organisation(id: ID!): Organisation
 
   services: [Service]
   service(id: ID!): Service

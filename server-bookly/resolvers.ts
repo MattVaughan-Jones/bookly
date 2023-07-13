@@ -1,40 +1,16 @@
 import Resolvers from './generated/resolvers-types.ts';
 
 export const resolvers: Resolvers = {
-    Author: {
-      posts: (parent, args, context, info) => parent.getPosts(),
+    Organisation: {
+      services: (parent, args, context, info) => parent.getServices(),
     },
-    Post: {
-      author: (parent, args, context, info) => parent.getAuthor(),
+    Service: {
+      organisation: (parent, args, context, info) => parent.getOrganisation(),
     },
     Query: {
-      posts: (parent, args, { db }, info) => db.post.findAll(),
-      authors: (parent, args, { db }, info) => db.author.findAll(),
-      post: (parent, { id }, { db }, info) => db.post.findByPk(id),
-      author: (parent, { id }, { db }, info) => db.author.findByPk(id) 
-    },
-    Mutation: {
-      createPost: (parent, { title, content, authorId }, { db }, info) =>
-        db.post.create({
-          title: title,
-          content: content,
-          authorId: authorId
-        }),
-      updatePost: (parent, { title, content, id }, { db }, info) =>
-        db.post.update({
-          title: title,
-          content: content
-        },
-        {
-          where: {
-            id: id
-          }
-        }),
-      deletePost: (parent, {id}, { db }, info) =>
-        db.post.destroy({
-          where: {
-            id: id
-          }
-        })
+      services: (parent, args, { db }, info) => db.service.findAll(),
+      organisations: (parent, args, { db }, info) => db.organisation.findAll(),
+      service: (parent, { id }, { db }, info) => db.service.findByPk(id),
+      organisation: (parent, { id }, { db }, info) => db.organisation.findByPk(id) 
     }
 };

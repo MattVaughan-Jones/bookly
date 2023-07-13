@@ -43,7 +43,9 @@ const Organisation = sequelize.define('organisations', {
     },
     phone_number: {
       type: DataTypes.STRING,
-      is: '^\+?[0-9]{6,18}$',
+      validate: {
+        is: '^\+?[0-9]{6,18}$'
+      },
       allowNull: true,
     }
   },
