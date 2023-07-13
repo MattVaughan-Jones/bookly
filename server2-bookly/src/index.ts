@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { routes } from './routes';
+import { sequelize } from './models/index';
 
 dotenv.config();
 
@@ -17,5 +18,10 @@ app.use(
 )
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  console.log(`[server]: Server is running at http://localhost:${port}`);
+  sequelize.authenticate().then(async() => {
+  })
+  .catch((e: any) => {
+    console.log(e.message);
+  })
 });
