@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const routes_1 = require("./routes");
-const index_1 = require("./models/index");
+const index_1 = require("./database/index");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
