@@ -16,6 +16,7 @@
     "dotenv": "^16.3.1",
     "graphql": "^16.7.1",
     "graphql-tag": "^2.12.6",
+    "mysql2": "^3.5.2",
     "nodemon": "^3.0.1",
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1"
