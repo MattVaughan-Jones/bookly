@@ -1,4 +1,4 @@
-import { Service } from './database/models/serviceModel.js';
+import { Service } from './database/models/service.js';
 
 export const resolvers = {
     Query: {
