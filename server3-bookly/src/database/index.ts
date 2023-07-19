@@ -1,14 +1,5 @@
 import { Sequelize } from "sequelize";
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const dbHost = process.env.DB_HOST;
-const dbUser = process.env.DB_USER;
-const dbPassword = process.env.DB_PASSWORD;
-const dbName = process.env.DB_NAME;
-const dbPort = process.env.DB_PORT;
-const dbDialect = process.env.DB_DIALECT;
+import { dbName, dbUser, dbPassword, dbHost, dbDialect, dbPort } from './../constants';
 
 export const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   host: dbHost,

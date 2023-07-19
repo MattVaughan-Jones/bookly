@@ -25,6 +25,8 @@ Organisation.init({
   modelName: 'Organisation',
 });
 
+
+
 async () => {
   await Organisation.sync({ alter: true })
 }
