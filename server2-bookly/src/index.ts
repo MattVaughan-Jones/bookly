@@ -14,7 +14,9 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use(
   '/',
-  routes
+  routes,
+  cors(),
+  bodyParser.json()
 )
 
 app.listen(port, () => {
