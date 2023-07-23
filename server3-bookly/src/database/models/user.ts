@@ -2,9 +2,6 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from "../index.js";
 
 export class User extends Model {
-  static associate(models) {
-    // define association here
-  };
   declare id: string;
   declare name: string;
   declare email: string;
@@ -30,9 +27,5 @@ User.init({
   }
 }, {
   sequelize,
-  modelName: 'Organisation',
+  modelName: 'User',
 });
-
-async () => {
-  await User.sync({ alter: true })
-}

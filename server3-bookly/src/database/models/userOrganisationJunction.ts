@@ -2,15 +2,17 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from "../index.js";
 
 export class User_Organisation extends Model {
-  static associate(models) {
-    // define association here
-  };
   declare id: string;
   declare name: string;
   declare email: string;
 }
 
 User_Organisation.init({
+  id: {
+    type: DataTypes.UUID,
+    allowNull: false,
+    primaryKey: true
+  },
   user_id: {
     type: DataTypes.UUID,
     allowNull: false,
@@ -23,7 +25,3 @@ User_Organisation.init({
   sequelize,
   modelName: 'User_Organisation',
 });
-
-async () => {
-  await User_Organisation.sync({ alter: true })
-}

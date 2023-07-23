@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize'
-import { sequelize } from "./index.js";
+import { sequelize } from "./../index.js";
 
 export class Service extends Model {
     declare id: string;
@@ -29,7 +29,3 @@ Service.init({
   sequelize,
   modelName: 'Service'
 });
-
-async () => {
-  await Service.sync({ alter: true })
-}
