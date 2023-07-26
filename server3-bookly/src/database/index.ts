@@ -1,10 +1,12 @@
-import { Sequelize } from "sequelize";
-import { dbName, dbUser, dbPassword, dbHost, dbDialect, dbPort } from './../constants.js';
+import { dbHost, dbUser, dbPassword, dbName, dbPort, dbDialect } from './../constants';
 
-export const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
-  host: dbHost,
-  dialect: dbDialect,
-  port: dbPort,
+export const knex = require('knex')({
+    client: dbDialect,
+    connection: {
+      host : dbHost,
+      port : dbPort,
+      user : dbUser,
+      password : dbPassword,
+      database : dbName
+    }
 });
-
-sequelize.sync({force: true});
