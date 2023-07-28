@@ -1,3 +1,4 @@
+import { users } from './queries/users.js';
 
 export const resolvers = {
     Query: {
@@ -8,7 +9,7 @@ export const resolvers = {
         //     }
         // }),
         // organisations: async () => await Organisation.findAll(),
-        // users: async () => await User.findAll(),
+        users: users,
         // organisationUsers: async () => await,
         // userOrganisations: async () => await, 
     },

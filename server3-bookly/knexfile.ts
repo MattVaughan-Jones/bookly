@@ -1,4 +1,6 @@
 import type { Knex } from "knex";
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Update with your config settings.
 
@@ -12,7 +14,7 @@ export default {
       database: process.env.DB_NAME,
     },
     migrations: {
-      directory: "./db/migrations",
+      directory: "./migrations",
     }
   },
 };
