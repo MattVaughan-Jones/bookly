@@ -1,5 +1,7 @@
 import { users } from './queries/users.js';
-// import { user } from './queries/user.js';
+import { getUser } from './queries/getUser.js';
+// import { organisations } from './queries/organisations.js';
+// import { organisation } from './queries/organisation.js';
 
 export const resolvers = {
     Query: {
@@ -9,9 +11,10 @@ export const resolvers = {
         //         id: serviceId
         //     }
         // }),
-        // organisations: async () => await Organisation.findAll(),
+        // organisations: organisations,
+        // organisation(parent, args) { organisation(parent, args) },
         users: users,
-        // user: user,
+        user(parent, args) { return getUser(parent, args) },
         // organisationUsers: async () => await,
         // userOrganisations: async () => await, 
     },
