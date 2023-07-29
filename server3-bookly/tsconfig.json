@@ -9,5 +9,5 @@
     "esModuleInterop": true,
     "types": ["node"],
   },
-  "include": ["src/"],
+  "include": ["src/**/*", "db/**/*", "knexfile.ts"],
 }

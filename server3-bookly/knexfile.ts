@@ -1,10 +1,12 @@
-import type { Knex } from "knex";
+import { Knex } from "knex";
 import dotenv from 'dotenv';
 dotenv.config();
 
-// Update with your config settings.
+interface KnexConfig {
+  [key: string]: Knex.Config
+}
 
-export default {
+const config: KnexConfig = {
   development: {
     client: "mysql2",
     connection: {
@@ -13,8 +15,14 @@ export default {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
     },
+    useNullAsDefault: true,
     migrations: {
-      directory: "./migrations",
-    }
+      directory: "./db/migrations",
+    },
+    seeds: {
+      directory: "./db/seeds",
+    },
   },
 };
+
+export default config;

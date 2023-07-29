@@ -1,4 +1,5 @@
 import { users } from './queries/users.js';
+// import { user } from './queries/user.js';
 
 export const resolvers = {
     Query: {
@@ -10,6 +11,7 @@ export const resolvers = {
         // }),
         // organisations: async () => await Organisation.findAll(),
         users: users,
+        // user: user,
         // organisationUsers: async () => await,
         // userOrganisations: async () => await, 
     },
