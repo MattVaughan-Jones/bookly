@@ -1,4 +1,4 @@
-import { users } from './queries/users.js';
+import { getUsers } from './queries/getUsers.js';
 import { getUser } from './queries/getUser.js';
 // import { organisations } from './queries/organisations.js';
 // import { organisation } from './queries/organisation.js';
@@ -13,7 +13,7 @@ export const resolvers = {
         // }),
         // organisations: organisations,
         // organisation(parent, args) { organisation(parent, args) },
-        users: users,
+        users: getUsers,
         user(parent, args) { return getUser(parent, args) },
         // organisationUsers: async () => await,
         // userOrganisations: async () => await, 
