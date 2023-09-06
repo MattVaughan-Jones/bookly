@@ -1,7 +1,7 @@
 import { getUsers } from './queries/getUsers.js';
 import { getUser } from './queries/getUser.js';
-// import { organisations } from './queries/organisations.js';
-// import { organisation } from './queries/organisation.js';
+import { getOrganisations } from './queries/getOrganisations.js';
+import { getOrganisation } from './queries/getOrganisation.js';
 
 export const resolvers = {
     Query: {
@@ -11,8 +11,8 @@ export const resolvers = {
         //         id: serviceId
         //     }
         // }),
-        // organisations: organisations,
-        // organisation(parent, args) { organisation(parent, args) },
+        organisations: getOrganisations,
+        organisation(parent, args) { return getOrganisation(parent, args) },
         users: getUsers,
         user(parent, args) { return getUser(parent, args) },
         // organisationUsers: async () => await,
