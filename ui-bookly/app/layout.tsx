@@ -1,4 +1,4 @@
-"use client";import "./globals.css";
+import "./globals.css";
 import { darkTheme } from "./theme/themes";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 

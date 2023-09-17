@@ -28,5 +28,6 @@ export const typeDefs = gql`#graphql
     user(id: ID!): User
     organisations: [Organisation]
     organisation(id: ID!): Organisation
+    organisationUsers: [User]
   }
 `;
