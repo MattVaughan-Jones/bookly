@@ -10,7 +10,8 @@ export const typeDefs = gql`#graphql
   type Organisation {
     id: ID
     name: String
-    users: [User]
+    created_at: String
+    updated_at: String
   }
 
   type User {
@@ -18,15 +19,15 @@ export const typeDefs = gql`#graphql
     name: String
     email: String
     password: String
-    organisations: [Organisation]
+    created_at: String
+    updated_at: String
   }
 
   type Query {
-    services: [Service]
-    service(id: ID): Service
-    serviceOrganisation(id: ID): [Organisation]
-    organisations: [Organisation]
     users: [User]
-    user: User
+    user(id: ID!): User
+    organisations: [Organisation]
+    organisation(id: ID!): Organisation
+    organisationUsers: [User]
   }
 `;
