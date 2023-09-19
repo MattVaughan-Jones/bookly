@@ -1,3 +1,5 @@
+"use client"
+// TODO - correctly implement MUI to allow SSR
 import "./globals.css";
 import { darkTheme } from "./theme/themes";
 import { ThemeProvider, CssBaseline } from "@mui/material";
