@@ -1,5 +1,3 @@
-"use client"
-// TODO - correctly implement MUI to allow SSR
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';

@@ -1,5 +1,3 @@
-'use client';
-// TODO - correctly implement MUI to allow SSR
 import { Grid, Card, TextField, Container } from '@mui/material';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
