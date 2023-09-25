@@ -1,5 +1,4 @@
 'use client';
-// TODO - correctly implement MUI to allow SSR
 import { Grid, Card, TextField, Container } from '@mui/material';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
@@ -12,8 +11,11 @@ const Feed: () => React.ReactElement = () => {
             <>
                 <Grid sx={{pt: 2}} container spacing={2}>
                     {organisations.map((organisation: any) => {
+                        console.log(organisation.id);
                         return (
-                            <OrganisationCard organisation={organisation} key={organisation.id}/>
+                            <Grid key={organisation.id} sx={{width: 1}} item justifyContent="center" alignItems="center">
+                                <OrganisationCard organisation={organisation}/>
+                            </Grid>
                         )
                     })}    
                 </Grid>
@@ -38,7 +40,7 @@ const Feed: () => React.ReactElement = () => {
         ];
 
         setOrganisations(data);
-    })
+    }, [])
 
     const [searchText, setSearchText] = useState('');
     const [organisations, setOrganisations] = useState([{}]);
