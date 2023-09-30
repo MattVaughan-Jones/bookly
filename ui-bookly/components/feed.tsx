@@ -4,27 +4,39 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { OrganisationCard } from './OrganisationCard';
 
+type organisation = { 
+    id: number,
+    name: string
+}
+
+type organisations = organisation[];
+
 const Feed: () => React.ReactElement = () => {
 
     const OrganisationCardList = () => {
-        return (
-            <>
-                <Grid sx={{pt: 2}} container spacing={2}>
-                    {organisations.map((organisation: any) => {
-                        console.log(organisation.id);
-                        return (
-                            <Grid key={organisation.id} sx={{width: 1}} item justifyContent="center" alignItems="center">
-                                <OrganisationCard organisation={organisation}/>
-                            </Grid>
-                        )
-                    })}    
-                </Grid>
-            </>
-        )
+        // to fix unique keys issue: https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js
+
+        if (organisations.length == 1 && !organisations[0].id) {
+            return
+        } else {
+            return (
+                <>
+                    <Grid sx={{pt: 2}} container spacing={2}>
+                        {organisations.map((organisation) => {
+                            return (
+                                <Grid key={organisation.id} sx={{width: 1}} item justifyContent="center" alignItems="center">
+                                    <OrganisationCard organisation={organisation}/>
+                                </Grid>
+                            )
+                        })}    
+                    </Grid>
+                </>
+            )
+        }
     };
 
     useEffect(() => {
-        const data: {id: number, name: string}[] = [
+        const data: organisations = [
             {
                 id: 1,
                 name: 'org 1',
@@ -43,7 +55,8 @@ const Feed: () => React.ReactElement = () => {
     }, [])
 
     const [searchText, setSearchText] = useState('');
-    const [organisations, setOrganisations] = useState([{}]);
+    // Record<PropertyKey, never> represents an empty object
+    const [organisations, setOrganisations] = useState<organisations | Record<PropertyKey, never>[]>([{}]);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
