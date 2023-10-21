@@ -3,6 +3,7 @@ import { Grid, Card, TextField, Container } from '@mui/material';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { OrganisationCard } from './OrganisationCard';
+import { gql, useQuery } from '@apollo/client';
 
 type organisation = { 
     id: number,
@@ -14,8 +15,6 @@ type organisations = organisation[];
 const Feed: () => React.ReactElement = () => {
 
     const OrganisationCardList = () => {
-        // to fix unique keys issue: https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js
-
         if (organisations.length == 1 && !organisations[0].id) {
             return
         } else {
@@ -35,23 +34,36 @@ const Feed: () => React.ReactElement = () => {
         }
     };
 
-    useEffect(() => {
-        const data: organisations = [
-            {
-                id: 1,
-                name: 'org 1',
-            },
-            {
-                id: 2,
-                name: 'org 2',
-            },
-            {
-                id: 3,
-                name: 'org 3',
+    const GET_ORGANISATIONS = gql`
+        query GetOrganisations {
+            organisations {
+                id
+                name
             }
-        ];
+        }
+    `;
+        
+    const { loading, error, data } = useQuery(GET_ORGANISATIONS)
+    console.log(data);
 
-        setOrganisations(data);
+    useEffect(() => {
+        // const data: organisations = [
+        //     {
+        //         id: 1,
+        //         name: 'org 1',
+        //     },
+        //     {
+        //         id: 2,
+        //         name: 'org 2',
+        //     },
+        //     {
+        //         id: 3,
+        //         name: 'org 3',
+        //     }
+        // ];
+
+        
+        // setOrganisations(data);
     }, [])
 
     const [searchText, setSearchText] = useState('');
@@ -64,7 +76,6 @@ const Feed: () => React.ReactElement = () => {
 
     return(
         <Container sx={{my: 2}}>
-            <section>
                 <form>
                     <TextField 
                         id="outlined-basic"
@@ -75,7 +86,6 @@ const Feed: () => React.ReactElement = () => {
                         sx={{width: 1}}
                     />
                 </form>
-            </section>
             <Grid sx={{pt: 2, px: 2}} container spacing={2}>
                 <OrganisationCardList/>
             </Grid>
