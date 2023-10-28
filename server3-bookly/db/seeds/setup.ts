@@ -10,6 +10,8 @@ export async function seed(knex: Knex): Promise<void> {
     const user1Id = uuidv4();
     const user2Id = uuidv4();
     const org1Id = uuidv4();
+    const org2Id = uuidv4();
+    const org3Id = uuidv4();
 
     // Inserts seed entries
     await knex("user").insert([
@@ -18,6 +20,8 @@ export async function seed(knex: Knex): Promise<void> {
     ]);
     await knex("organisation").insert([
         { id: org1Id, name: 'org1' },
+        { id: org2Id, name: 'org2' },
+        { id: org3Id, name: 'org3' }
     ]);
     await knex("userOrganisation").insert([
         { user_id: user1Id, organisation_id: org1Id },
