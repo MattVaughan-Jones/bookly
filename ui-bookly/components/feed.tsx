@@ -1,16 +1,14 @@
 'use client';
-import { Grid, Card, TextField, Container } from '@mui/material';
+import { Grid, TextField, Container } from '@mui/material';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { OrganisationCard } from './OrganisationCard';
 import { gql, useQuery } from '@apollo/client';
 
-type organisation = { 
-    id: number,
-    name: string
+type Organisation = { 
+    id: String,
+    name: String
 }
-
-type organisations = organisation[];
 
 const GET_ORGANISATIONS = gql`
     query GetOrganisations {
@@ -25,18 +23,11 @@ const Feed = () => {
 
     const [searchText, setSearchText] = useState('');
 
-    // Record<PropertyKey, never> represents an empty object
-    // const [organisations, setOrganisations] = useState<organisations | Record<PropertyKey, never>[]>([{}]);
-
     const { loading, error, data } = useQuery(GET_ORGANISATIONS);
 
     if (loading) return "Loading...";
   
     if (error) return `Error! ${error.message}`;
-  
-    // const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-    // }
 
     return(
         <Container sx={{my: 2}}>
@@ -51,7 +42,7 @@ const Feed = () => {
                 />
             </form>
             <Grid sx={{pt: 2, px: 0, width: 1}} container spacing={2}>
-                {data.organisations.map((organisation: organisation) => {
+                {data.organisations.map((organisation: Organisation) => {
                     return (
                         <Grid key={organisation.id} sx={{width: 1}} item justifyContent="center" alignItems="center">
                             <OrganisationCard organisation={organisation}/>
