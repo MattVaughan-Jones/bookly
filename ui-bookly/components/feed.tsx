@@ -1,18 +1,56 @@
 'use client';
-import { Grid, Card } from '@mui/material';
+import { Grid, TextField, Container } from '@mui/material';
 import * as React from 'react';
+import { useState } from 'react';
+import { OrganisationCard } from './OrganisationCard';
+import { gql, useQuery } from '@apollo/client';
 
-const Feed: () => React.ReactElement = () => {
+type Organisation = { 
+    id: string,
+    name: string
+}
+
+const GET_ORGANISATIONS = gql`
+    query GetOrganisations {
+        organisations {
+            id
+            name
+        }
+    }
+`;
+
+const Feed = () => {
+
+    const [searchText, setSearchText] = useState('');
+
+    const { loading, error, data } = useQuery(GET_ORGANISATIONS);
+
+    if (loading) return "Loading...";
+  
+    if (error) return `Error! ${error.message}`;
+
     return(
-        <>
-            <Grid sx={{mt: 4}} spacing={2}>
-                <Grid justifyContent="center" alignItems="center">
-                    <Card sx={{ border: '1px solid', width: 1, borderRadius: 2 }}>
-                        <p>Here's some text</p>
-                    </Card>
-                </Grid>
+        <Container sx={{my: 2}}>
+            <form>
+                <TextField 
+                    id="outlined-basic"
+                    label="Search"
+                    variant="outlined"
+                    value={searchText}
+                    // onChange={handleSearchChange}
+                    sx={{width: 1}}
+                />
+            </form>
+            <Grid sx={{pt: 2, px: 0, width: 1}} container spacing={2}>
+                {data.organisations.map((organisation: Organisation) => {
+                    return (
+                        <Grid key={organisation.id} sx={{width: 1}} item justifyContent="center" alignItems="center">
+                            <OrganisationCard organisation={organisation}/>
+                        </Grid>
+                    )
+                })}    
             </Grid>
-        </>
+        </Container>
     )
 }
 

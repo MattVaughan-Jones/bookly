@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import PersonIcon from '@mui/icons-material/Person';
 import TuneIcon from '@mui/icons-material/Tune';
 import Typography from '@mui/material/Typography';
-import { Feed } from '../components/feed';
+import { Feed } from '../components/Feed';
 
 export default function Home() {
   return (
