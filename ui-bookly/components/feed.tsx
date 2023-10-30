@@ -12,82 +12,52 @@ type organisation = {
 
 type organisations = organisation[];
 
-const Feed: () => React.ReactElement = () => {
-
-    const OrganisationCardList = () => {
-        if (organisations.length == 1 && !organisations[0].id) {
-            return
-        } else {
-            return (
-                <>
-                    <Grid sx={{pt: 2}} container spacing={2}>
-                        {organisations.map((organisation) => {
-                            return (
-                                <Grid key={organisation.id} sx={{width: 1}} item justifyContent="center" alignItems="center">
-                                    <OrganisationCard organisation={organisation}/>
-                                </Grid>
-                            )
-                        })}    
-                    </Grid>
-                </>
-            )
+const GET_ORGANISATIONS = gql`
+    query GetOrganisations {
+        organisations {
+            id
+            name
         }
-    };
+    }
+`;
 
-    const GET_ORGANISATIONS = gql`
-        query GetOrganisations {
-            organisations {
-                id
-                name
-            }
-        }
-    `;
-        
-    const { loading, error, data } = useQuery(GET_ORGANISATIONS)
-    console.log(data);
-
-    useEffect(() => {
-        // const data: organisations = [
-        //     {
-        //         id: 1,
-        //         name: 'org 1',
-        //     },
-        //     {
-        //         id: 2,
-        //         name: 'org 2',
-        //     },
-        //     {
-        //         id: 3,
-        //         name: 'org 3',
-        //     }
-        // ];
-
-        
-        // setOrganisations(data);
-    }, [])
+const Feed = () => {
 
     const [searchText, setSearchText] = useState('');
+
     // Record<PropertyKey, never> represents an empty object
-    const [organisations, setOrganisations] = useState<organisations | Record<PropertyKey, never>[]>([{}]);
+    // const [organisations, setOrganisations] = useState<organisations | Record<PropertyKey, never>[]>([{}]);
 
-    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { loading, error, data } = useQuery(GET_ORGANISATIONS);
 
-    }
+    if (loading) return "Loading...";
+  
+    if (error) return `Error! ${error.message}`;
+  
+    // const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+    // }
 
     return(
         <Container sx={{my: 2}}>
-                <form>
-                    <TextField 
-                        id="outlined-basic"
-                        label="Search"
-                        variant="outlined"
-                        value={searchText}
-                        onChange={handleSearchChange}
-                        sx={{width: 1}}
-                    />
-                </form>
-            <Grid sx={{pt: 2, px: 2}} container spacing={2}>
-                <OrganisationCardList/>
+            <form>
+                <TextField 
+                    id="outlined-basic"
+                    label="Search"
+                    variant="outlined"
+                    value={searchText}
+                    // onChange={handleSearchChange}
+                    sx={{width: 1}}
+                />
+            </form>
+            <Grid sx={{pt: 2, px: 0, width: 1}} container spacing={2}>
+                {data.organisations.map((organisation: organisation) => {
+                    return (
+                        <Grid key={organisation.id} sx={{width: 1}} item justifyContent="center" alignItems="center">
+                            <OrganisationCard organisation={organisation}/>
+                        </Grid>
+                    )
+                })}    
             </Grid>
         </Container>
     )

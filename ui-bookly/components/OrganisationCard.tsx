@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 const OrganisationCard = ( props: any ) => {
     return(
-        <Card sx={{ border: '1px solid', width: 1, borderRadius: 2, px: 2 }}>
+        <Card sx={{ pl: 2, border: '1px solid', width: 1, borderRadius: 2}}>
             <p>{props.organisation.name}</p>
         </Card>
     )
