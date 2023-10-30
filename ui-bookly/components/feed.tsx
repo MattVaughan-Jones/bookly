@@ -6,8 +6,8 @@ import { OrganisationCard } from './OrganisationCard';
 import { gql, useQuery } from '@apollo/client';
 
 type Organisation = { 
-    id: String,
-    name: String
+    id: string,
+    name: string
 }
 
 const GET_ORGANISATIONS = gql`
