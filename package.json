@@ -3,12 +3,20 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "nextdev": "next dev"
+    "nextdev": "next dev",
+    "":"",
+    "compile": "npx tsc -w",
+    "dev": "nodemon -q server3-bookly/dist/src/index.js",
+    "migrate:make": "node --loader ts-node/esm ./node_modules/.bin/knex migrate:make -x ts",
+    "migrate:latest": "node --loader ts-node/esm ./node_modules/.bin/knex migrate:latest",
+    "seed:make": "node --loader ts-node/esm ./node_modules/.bin/knex seed:make -x ts",
+    "seed:fresh": "node --loader ts-node/esm ./node_modules/.bin/knex seed:run"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
-    "@types/node": "^20.3.3",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "@types/node": "^20.4.2",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
     "@apollo/client": "^3.8.0-rc.2",
@@ -25,7 +33,14 @@
     "graphql": "^16.8.1",
     "next": "13.4.7",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "@apollo/server": "^4.7.5",
+    "dotenv": "^16.3.1",
+    "graphql-tag": "^2.12.6",
+    "knex": "^2.5.1",
+    "mysql2": "^3.5.2",
+    "nodemon": "^3.0.1",
+    "uuid": "^9.0.0"
   },
   "author": "",
   "license": "ISC"

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "rootDirs": ["server3-bookly/src"],
+    "outDir": "server3-bookly/dist",
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "types": ["node"],
+  },
+  "include": [
+    "server3-bookly/src/**/*", 
+    "server3-bookly/db/**/*", 
+    "server3-bookly/knexfile.ts"
+  ],
+}
