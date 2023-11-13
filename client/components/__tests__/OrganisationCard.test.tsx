@@ -8,10 +8,10 @@ describe('render', () => {
             id: '1'
         }
 
-        render(<OrganisationCard organisation={mockOrganisation}/>) // ARANGE
+        render(<OrganisationCard organisation={mockOrganisation}/>)
 
-        const orgName = screen.getByText('mockorg') // ACT
+        const orgName = screen.getByText('mockorg')
 
-        expect(orgName).toBeInTheDocument(); // ASSERT
+        expect(orgName).toBeInTheDocument()
     })
 })
