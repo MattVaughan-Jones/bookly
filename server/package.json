@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run compile && npm run watch",
+    "dev": "npm run compile & npm run watch",
     "compile": "npx tsc -w",
     "watch": "nodemon -q dist/src/index.js",
     "migrate:make": "node --loader ts-node/esm ./node_modules/.bin/knex migrate:make -x ts",

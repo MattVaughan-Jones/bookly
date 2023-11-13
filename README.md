@@ -10,3 +10,5 @@ knex cheatsheet: https://devhints.io/knex
 How to use Apollo Client to query: 
 https://www.apollographql.com/blog/apollo-client/next-js/next-js-getting-started/
 https://www.apollographql.com/blog/apollo-client/next-js/how-to-use-apollo-client-with-next-js-13/
+
+Testing Apollo Client components: https://www.apollographql.com/docs/react/development-testing/testing/
