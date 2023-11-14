@@ -18,13 +18,16 @@ export const GET_ORGANISATIONS = gql`
     }
 `;
 
-export function Feed() {
+export const Feed = () => {
 
     const { loading, error, data } = useQuery(GET_ORGANISATIONS);
 
     if (loading) return "Loading...";
   
-    if (error) return `${error.message}`;
+    if (error) {
+        console.log(error.message)
+        return ('Error: unable to retrieve feed')
+    }
 
     return (
         <Container sx={{my: 2}}>

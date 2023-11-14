@@ -3,7 +3,7 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Container } from '@mui/material';
 
-export function SearchBar() {
+export const SearchBar = () => {
     const [searchText, setSearchText] = useState('');
     
     return (

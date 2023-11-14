@@ -59,5 +59,6 @@ it("should show error UI on graphQL server error", async () => {
             <Feed />
         </MockedProvider>
     );
-    expect(await screen.findByText("Server error!")).toBeInTheDocument();
+    
+    expect(await screen.findByText('Error: unable to retrieve feed')).toBeInTheDocument();
 });
