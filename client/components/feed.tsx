@@ -3,6 +3,11 @@ import { Grid, Container } from '@mui/material';
 import * as React from 'react';
 import { OrganisationCard } from './OrganisationCard';
 import { gql, useQuery } from '@apollo/client';
+import CSS from 'csstype';
+
+const errorStyle: CSS.Properties = {
+    color: 'red',
+}
 
 type Organisation = { 
     id: string,
@@ -26,7 +31,9 @@ export const Feed = () => {
   
     if (error) {
         console.log(error.message)
-        return ('Error: unable to retrieve feed')
+        return (
+            <span style={errorStyle}>{error.message}</span>
+        )
     }
 
     return (

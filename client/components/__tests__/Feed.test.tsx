@@ -22,7 +22,7 @@ const mockOrganisationsNetworkError = [{
     request: {
         query: GET_ORGANISATIONS
     },
-    error: new Error("An error occurred")
+    error: new Error("A network error occurred")
 }];
 
 const mockOrganisationsGQLError = [{
@@ -50,7 +50,8 @@ it("should show error UI on network error", async () => {
             <Feed />
         </MockedProvider>
     );
-    expect(await screen.findByText("An error occurred")).toBeInTheDocument();
+
+    expect(await screen.findByText("A network error occurred")).toBeInTheDocument();
 });
 
 it("should show error UI on graphQL server error", async () => {
@@ -60,5 +61,5 @@ it("should show error UI on graphQL server error", async () => {
         </MockedProvider>
     );
     
-    expect(await screen.findByText('Error: unable to retrieve feed')).toBeInTheDocument();
+    expect(await screen.findByText("Server error!")).toBeInTheDocument();
 });
