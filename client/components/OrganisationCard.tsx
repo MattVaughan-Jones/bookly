@@ -10,12 +10,10 @@ type Props = {
     organisation: Organisation
 }
 
-const OrganisationCard = ( { organisation }: Props ) => {
+export const OrganisationCard = ( { organisation }: Props ) => {
     return(
         <Card sx={{ pl: 2, border: '1px solid', width: 1, borderRadius: 2}}>
             <p>{organisation.name}</p>
         </Card>
     )
 }
-
-export { OrganisationCard };

@@ -1,11 +1,12 @@
 {
-  "name": "server3-bookly",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npm run compile & npm run watch",
     "compile": "npx tsc -w",
-    "dev": "nodemon -q dist/src/index.js",
+    "watch": "nodemon -q dist/src/index.js",
     "migrate:make": "node --loader ts-node/esm ./node_modules/.bin/knex migrate:make -x ts",
     "migrate:latest": "node --loader ts-node/esm ./node_modules/.bin/knex migrate:latest",
     "seed:make": "node --loader ts-node/esm ./node_modules/.bin/knex seed:make -x ts",

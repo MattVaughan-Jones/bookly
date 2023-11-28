@@ -1,16 +1,20 @@
 'use client';
-import { Grid, TextField, Container } from '@mui/material';
+import { Grid, Container } from '@mui/material';
 import * as React from 'react';
-import { useState } from 'react';
 import { OrganisationCard } from './OrganisationCard';
 import { gql, useQuery } from '@apollo/client';
+import CSS from 'csstype';
+
+const errorStyle: CSS.Properties = {
+    color: 'red',
+}
 
 type Organisation = { 
     id: string,
     name: string
 }
 
-const GET_ORGANISATIONS = gql`
+export const GET_ORGANISATIONS = gql`
     query GetOrganisations {
         organisations {
             id
@@ -19,28 +23,22 @@ const GET_ORGANISATIONS = gql`
     }
 `;
 
-const Feed = () => {
-
-    const [searchText, setSearchText] = useState('');
+export const Feed = () => {
 
     const { loading, error, data } = useQuery(GET_ORGANISATIONS);
 
     if (loading) return "Loading...";
   
-    if (error) return `Error! ${error.message}`;
+    if (error) {
+        console.log(error.message)
+        return (
+            <span style={errorStyle}>{error.message}</span>
+        )
+    }
 
-    return(
+    return (
         <Container sx={{my: 2}}>
-            <form>
-                <TextField 
-                    id="outlined-basic"
-                    label="Search"
-                    variant="outlined"
-                    value={searchText}
-                    // onChange={handleSearchChange}
-                    sx={{width: 1}}
-                />
-            </form>
+            
             <Grid sx={{pt: 2, px: 0, width: 1}} container spacing={2}>
                 {data.organisations.map((organisation: Organisation) => {
                     return (
@@ -53,5 +51,3 @@ const Feed = () => {
         </Container>
     )
 }
-
-export { Feed };

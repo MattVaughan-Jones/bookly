@@ -1,6 +1,5 @@
 import { Knex } from "knex";
-import dotenv from 'dotenv';
-dotenv.config();
+import {  dbHost, dbUser, dbPassword, dbName, dbDialect } from './src/constants.js';
 
 interface KnexConfig {
   [key: string]: Knex.Config
@@ -8,12 +7,12 @@ interface KnexConfig {
 
 const config: KnexConfig = {
   development: {
-    client: "mysql2",
+    client: dbDialect,
     connection: {
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      host: dbHost,
+      user: dbUser,
+      password: dbPassword,
+      database: dbName,
     },
     useNullAsDefault: true,
     migrations: {
